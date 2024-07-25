@@ -5,8 +5,8 @@ Project(join)
 find_package(Boost REQUIRED COMPONENTS thread system)
 find_package(ENCRYPTO_utils REQUIRED)
 find_package(OTExtension REQUIRED)
+find_package(ABY REQUIRED)
 
-add_subdirectory(extern/ABY)
 add_executable(join
 	join.cpp
 	nest_loop_join.cpp
@@ -23,29 +23,26 @@ add_executable(test
 	test.cpp
 	utils.cpp
 	obliv_permutation.cpp
-	)
+)
 
 target_link_libraries(join PUBLIC
 	ABY::aby
 	relic_s
-	)
-
-target_include_directories(join PUBLIC ${ENCRYPTO_utils_INCLUDE_DIRS})
-target_include_directories(join PUBLIC ${OTExtension_INCLUDE_DIRS})
+)
 
 target_include_directories(join PUBLIC
-	extern/ABY/src/abycore
-	)
+	${ENCRYPTO_utils_INCLUDE_DIRS}
+	${OTExtension_INCLUDE_DIRS}
+	${ABY_INCLUDE_DIRS}
+)
 
 target_link_libraries(test PUBLIC
 	ABY::aby
 	relic_s
-	)
-
+)
 
 target_include_directories(test PUBLIC
-	extern/ABY/src/abycore
-	)
-
-target_include_directories(test PUBLIC ${ENCRYPTO_utils_INCLUDE_DIRS})
-target_include_directories(test PUBLIC ${OTExtension_INCLUDE_DIRS})
+	${ENCRYPTO_utils_INCLUDE_DIRS}
+	${OTExtension_INCLUDE_DIRS}
+	${ABY_INCLUDE_DIRS}
+)

@@ -1,10 +1,4 @@
-#include <ENCRYPTO_utils/crypto/crypto.h>
-#include <ENCRYPTO_utils/parse_options.h>
-#include "sharing/sharing.h"
-#include "aby/abyparty.h"
-#include "circuit/circuit.h"
-#include "circuit/booleancircuits.h"
-#include "circuit/arithmeticcircuits.h"
+
 #include "utils.h"
 #include <vector>
 #include <string>
