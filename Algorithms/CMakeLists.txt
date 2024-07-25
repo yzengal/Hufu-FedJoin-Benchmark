@@ -3,9 +3,10 @@ cmake_minimum_required(VERSION 3.16)
 Project(join)
 
 find_package(Boost REQUIRED COMPONENTS thread system)
+find_package(ENCRYPTO_utils REQUIRED)
+find_package(OTExtension REQUIRED)
 
 add_subdirectory(extern/ABY)
-
 add_executable(join
 	join.cpp
 	nest_loop_join.cpp
@@ -29,10 +30,11 @@ target_link_libraries(join PUBLIC
 	relic_s
 	)
 
+target_include_directories(join PUBLIC ${ENCRYPTO_utils_INCLUDE_DIRS})
+target_include_directories(join PUBLIC ${OTExtension_INCLUDE_DIRS})
 
 target_include_directories(join PUBLIC
 	extern/ABY/src/abycore
-	extern/ABY/extern/ENCRYPTO_utils/src
 	)
 
 target_link_libraries(test PUBLIC
@@ -43,5 +45,7 @@ target_link_libraries(test PUBLIC
 
 target_include_directories(test PUBLIC
 	extern/ABY/src/abycore
-	extern/ABY/extern/ENCRYPTO_utils/src
 	)
+
+target_include_directories(test PUBLIC ${ENCRYPTO_utils_INCLUDE_DIRS})
+target_include_directories(test PUBLIC ${OTExtension_INCLUDE_DIRS})
